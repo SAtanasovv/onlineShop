@@ -6,15 +6,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/users")
+@RequestMapping("api/addresses")
 public class AddressController {
     @PostMapping
-    public String createAddress(@RequestBody User user){
-        return "Hello ".concat(user.getFirstName());
+    public void createAddress(@RequestBody Address address) {
+
     }
-    @GetMapping("/test")
-    private String test(){
-        return "Hello";
+
+    @PutMapping
+    public void updateAddress(@RequestBody Address address) {
+
+    }
+    @GetMapping
+    public List<Address> getAllAddresses() {
+        return null;
+
     }
     @GetMapping("/{addressId}")
     public Address getAddress(@PathVariable Long addressId){

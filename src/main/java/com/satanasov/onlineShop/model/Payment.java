@@ -6,7 +6,7 @@ import com.satanasov.onlineShop.model.enums.PaymentType;
 import javax.persistence.*;
 
 @Entity
-@Table(name="feature_packages")
+@Table(name="payments")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

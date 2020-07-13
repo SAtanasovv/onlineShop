@@ -1,12 +1,19 @@
 package com.satanasov.onlineShop.service;
 
 import com.satanasov.onlineShop.model.City;
+import com.satanasov.onlineShop.repository.CityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Component
 public class CityServiceImpl implements CityService {
+    private final CityRepository cityRepository;
+    @Autowired
+    public CityServiceImpl(CityRepository cityRepository) {
+        this.cityRepository = cityRepository;
+    }
+
     @Override
     public void createCity(City city) {
 

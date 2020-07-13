@@ -1,8 +1,16 @@
 package com.satanasov.onlineShop.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="medias")
 public class Media {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String mediaURL;
+    @Column
     private String description;
 
     public Long getId() {

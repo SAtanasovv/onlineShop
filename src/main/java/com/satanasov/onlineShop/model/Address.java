@@ -1,16 +1,25 @@
 package com.satanasov.onlineShop.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="addresses")
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @ManyToOne
+    @JoinColumn(name = "country_id")
     private Country country;
-
+    @ManyToOne
+    @JoinColumn(name = "city_id")
     private City city;
-
+    @Column(name = "street_name")
     private String streetName;
-
+    @Column(name = "street_number")
     private String streetNumber;
-
+    @Column
     private Integer floor;
 
     public Long getId() {

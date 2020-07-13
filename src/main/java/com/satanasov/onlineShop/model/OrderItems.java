@@ -1,23 +1,31 @@
 package com.satanasov.onlineShop.model;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name="order_items")
 public class OrderItems {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Set<ShoppingCart> cartItems = new HashSet<>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cart_items_id")
+    private ShoppingCart cartItems;
+    @Column
     private Double orderTotalPrice;
 
     public Long getId() {
         return id;
     }
 
-    public Set<ShoppingCart> getCartItems() {
-        return cartItems;
+    public Iterable<ShoppingCart> getCartItems() {
+        return null;
     }
 
-    public void setCartItems(Set<ShoppingCart> cartItems) {
-        this.cartItems = cartItems;
+    public void setCartItems(Iterable<ShoppingCart> cartItems) {
+        //this.cartItems = cartItems;
     }
 
     public Double getOrderTotalPrice() {

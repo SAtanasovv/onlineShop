@@ -1,10 +1,23 @@
 package com.satanasov.onlineShop.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="review")
 public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
     private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "media_id")
     private Media media;
+    @Column
     private String description;
+    @Column
     private Double rating;
 
     public Long getId() {

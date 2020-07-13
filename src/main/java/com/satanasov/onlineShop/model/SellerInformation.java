@@ -1,9 +1,20 @@
 package com.satanasov.onlineShop.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="seller_information")
 public class SellerInformation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private Address address;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
+    @Column
     private String description;
 
     public Long getId() {

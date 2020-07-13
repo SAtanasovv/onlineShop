@@ -1,13 +1,28 @@
 package com.satanasov.onlineShop.model;
 
-import java.util.HashSet;
-import java.util.Set;
 
+
+
+
+import javax.persistence.*;
+import java.util.Set;
+@Entity
+@Table(name="orders")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Set<OrderItems> items = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "items_id")
+    private Item items;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment_id")
     private Payment payment;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shipment_id")
     private Shipment shipment;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Long getId() {
@@ -15,12 +30,12 @@ public class Order {
     }
 
     public Set<OrderItems> getItems() {
-        return items;
+        return null;
     }
 
-    public void setItems(Set<OrderItems> items) {
-        this.items = items;
-    }
+//    public void setItems(Set<OrderItems> items) {
+//        this.items = items;
+//    }
 
     public Payment getPayment() {
         return payment;
